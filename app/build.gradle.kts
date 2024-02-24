@@ -56,15 +56,6 @@ android {
 
 dependencies {
 
-    arrayOf(
-        "com.google.dagger:hilt-android:2.44",
-        "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha02"
-    ).forEach { dep ->
-        implementation(dep) {
-            exclude(group = "javax.annotation", module = "jsr250-api")
-        }
-    }
-
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
     implementation("androidx.activity:activity-compose:1.8.2")
@@ -86,10 +77,8 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:2.7.7")
 
     //Dagger - Hilt
-    implementation("com.google.dagger:hilt-android:2.49")
-    kapt("com.google.dagger:hilt-android-compiler:2.44")
-    implementation("androidx.hilt:hilt-lifecycle-viewmodel")
-    kapt("com.google.dagger:hilt-android-compiler:2.44")
+    implementation("com.google.dagger:hilt-android:2.50")
+    kapt("com.google.dagger:hilt-android-compiler:2.50")
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
 
     // Room
