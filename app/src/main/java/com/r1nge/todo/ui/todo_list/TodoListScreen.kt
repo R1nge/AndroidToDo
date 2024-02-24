@@ -86,6 +86,4 @@ fun TodoListScreen(
             }
         }
     }
-
-
 }

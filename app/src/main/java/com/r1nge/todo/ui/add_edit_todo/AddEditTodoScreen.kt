@@ -17,11 +17,14 @@ import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.r1nge.todo.util.UIEvent
+import kotlinx.coroutines.flow.collect
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
@@ -31,6 +34,22 @@ fun AddEditTodoScreen(
 
     val snackbarHostState = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
+
+    LaunchedEffect(key1 = true){
+        viewModel.uiEvent.collect{
+            event ->
+            when(event){
+                is UIEvent.Navigate -> onPopBackEvent()
+                is UIEvent.ShowSnackbar -> {
+                    snackbarHostState.showSnackbar(
+                        message = event.message,
+                        actionLabel = event.action
+                    )
+                }
+                else -> Unit
+            }
+        }
+    }
 
     Scaffold(modifier = Modifier
         .fillMaxSize()
