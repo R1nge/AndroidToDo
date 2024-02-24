@@ -47,7 +47,7 @@ class MainActivity : ComponentActivity() {
                             }
                         )
                     ) {
-                        AddEditTodoScreen(onPopBackEvent = {
+                        AddEditTodoScreen(onPopBackStack = {
                             navController.popBackStack()
                         })
                     }
