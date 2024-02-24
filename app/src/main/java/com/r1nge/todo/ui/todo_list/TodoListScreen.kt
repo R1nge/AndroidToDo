@@ -73,7 +73,8 @@ fun TodoListScreen(
                     scope.launch {
                         val result = snackbarHostState.showSnackbar(
                             event.message,
-                            event.action
+                            event.action,
+                            duration = event.duration
                         )
 
                         if (result == SnackbarResult.ActionPerformed) {
